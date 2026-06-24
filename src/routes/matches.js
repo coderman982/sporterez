@@ -59,6 +59,26 @@ try {
         status:getMatchStatus(startTime,endTime),
     }).returning();
 
+    if(res.app.locals.broadcastMatchCreated){
+        res.app.locals.broadcastMatchCreated(event);
+    }
+
+    //In your code, that function does:
+
+// broadcast(wss, { type: 'match_created', data: match })
+// So event is used as the data field in the broadcast message sent to WebSocket clients.
+
+
+
+// //if (res.app.locals.broadcastMatchCreated) { ... }
+
+// checks whether broadcastMatchCreated is defined on app.locals
+// if it exists, calls res.app.locals.broadcastMatchCreated(event)
+// So in this route:
+
+// after a new match is created and stored in the database
+// it sends the new match event to all connected WebSocket clients
+// only if the WebSocket broadcast helper was attached successfully in index.js
 
     res.status(201).json({date:event})}
     
