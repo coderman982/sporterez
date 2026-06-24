@@ -1,7 +1,7 @@
 import { WebSocket } from "ws";
 
 function sendJson(socket,payload){
-    if(socket.readyState!=WebSocket.OPEN) return;//this will return
+    if(socket.readyState!=WebSocket.OPEN) continue;//this will return
 socket.send(JSON.stringify(payload))}
 
 
