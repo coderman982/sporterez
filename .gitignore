@@ -9,4 +9,5 @@
 /dataSources/
 /dataSources.local.xml
 
-.env
+echo ".env" >> .gitignore
+git rm --cached .env
